@@ -14,13 +14,13 @@ import java.util.Scanner;
  */
 public class Test {
 
+    static int ID = 0;
     static Scanner keyboard = new Scanner(System.in);
+    static library gmm = new library();
 
     public static void main(String[] args) {
 
         String bookBorrow = null;
-        int ID = 0;
-        library gmm = new library();
 
         int option = 0;
 
@@ -46,34 +46,33 @@ public class Test {
 
             if (option == 2) {
                 System.out.println("List of books : " + gmm.showBook());
-                
-                do {
-                    System.out.print("Insert your ID : ");
-                    ID = getNumberFromKeyboard();
-                } while (!gmm.checkName(ID));
-
+                if(!gmm.checkAllMember()){
+                getIdFromKeyboard();
                 System.out.print("Insert name of books : ");
 //                keyboard.nextLine();
                 bookBorrow = keyboard.nextLine();
                 System.out.println(gmm.borrowBook(bookBorrow, gmm.whoBorrowByIndex(ID)));
-
+                }else{System.out.println("Not have members yet!!!");}
             }
 
             if (option == 3) {
                 System.out.println("List of books : " + gmm.showBook());
-                System.out.print("Insert your ID : ");
-                ID = getNumberFromKeyboard();
+                if(!gmm.checkAllMember()){
+                getIdFromKeyboard();
+                if(gmm.getMember(ID).getBook(0)!=null||gmm.getMember(ID).getBook(0)!=null){
                 System.out.print("Insert name of books : ");
                 String bookReturn = keyboard.nextLine();
-                System.out.println(gmm.returnBook(bookReturn, gmm.whoBorrowByIndex(ID)));
-
+                System.out.println(gmm.returnBook(bookReturn, gmm.whoBorrowByIndex(ID)));}
+                else{System.out.println("Not have a book to return");}
+                }else{System.out.println("Not have members yet!!!");}
             }
 
             if (option == 4) {
-                System.out.print("Insert ID:");
-                ID = keyboard.nextInt();
+                if(!gmm.checkAllMember()){
+                getIdFromKeyboard();
                 System.out.println("Name : " + gmm.getMember(gmm.whoBorrowByIndex(ID)).toString());
-
+                }
+                else{System.out.println("Not have members yet!!!");}
             }
 
             if (option == 5) {
@@ -87,7 +86,7 @@ public class Test {
     public static int getNumberFromKeyboard() {
         int number = 0;
         while (!keyboard.hasNextInt()) {
-            System.out.print("Not this!!");
+            System.out.println("Not this!!");
             keyboard.next();
 
         }
@@ -96,4 +95,12 @@ public class Test {
         return number;
     }
 
+    public static void getIdFromKeyboard() {
+        do {
+            System.out.print("Insert your ID : ");
+            ID = getNumberFromKeyboard();
+
+        } while (!gmm.checkName(ID));
+        
+    }
 }

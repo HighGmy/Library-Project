@@ -83,7 +83,9 @@ public class Member {
         if (this.book[1] != null) {
             book += this.book[1];
         }
-
+        if (memberID==-1){
+            return "Full of members!!";
+        }
         return "Member {" + "Your member ID = " + memberID + ", Your member name = " + memberName + '}' + book;
     }
 

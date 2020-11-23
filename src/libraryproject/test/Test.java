@@ -1,12 +1,13 @@
-package libraryproject;
+package libraryproject.test;
 
 import java.util.Scanner;
+import libraryproject.LibrarySystem;
 
 public class Test {
 
-    static int ID = 0;
+    private static int ID = 0;
+    private static LibrarySystem gmm = new LibrarySystem();
     static Scanner keyboard = new Scanner(System.in);
-    static Library gmm = new Library();
 
     public static void main(String[] args) {
 
@@ -27,41 +28,50 @@ public class Test {
             System.out.print("Enter Option: ");
 
             option = getNumberFromKeyboard();
+            System.out.println(" ");
 
             if (option == 1) {
                 System.out.print("Please insert name: ");
                 String name = keyboard.nextLine();
-                System.out.println(gmm.registMember(name));
+                System.out.println(" ");
+                System.out.println("---> " + gmm.registMember(name) + " <--- ");
+                System.out.println(" ");
 
             }
 
             if (option == 2) {
                 System.out.println("List of books : " + gmm.showBook());
+                System.out.println(" ");
                 if (!gmm.checkAllMember()) {
                     getIdFromKeyboard();
                     System.out.print("Insert name of books : ");
 //                  keyboard.nextLine();
                     bookBorrow = keyboard.nextLine();
-                    System.out.println(gmm.borrowBook(bookBorrow, gmm.whoBorrowByIndex(ID)));
+                    System.out.println(" ");
+                    System.out.println("             " + gmm.borrowBook(bookBorrow, gmm.whoBorrowByIndex(ID)) + "             ");
+                    System.out.println(" ");
                 } else {
-                    System.out.println(" ----> Not have members yet!! <---- ");
+                    System.out.println(" ---> Not have members yet! <--- ");
                     System.out.println(" ");
                 }
             }
 
             if (option == 3) {
                 System.out.println("List of books : " + gmm.showBook());
+                System.out.println(" ");
                 if (!gmm.checkAllMember()) {
                     getIdFromKeyboard();
                     if (gmm.getMember(ID).getBook(0) != null || gmm.getMember(ID).getBook(0) != null) {
                         System.out.print("Insert name of books : ");
                         String bookReturn = keyboard.nextLine();
+                        System.out.println(" ");
                         System.out.println(gmm.returnBook(bookReturn, gmm.whoBorrowByIndex(ID)));
+                        System.out.println(" ");
                     } else {
-                        System.out.println("Not have a book to return");
+                        System.out.println(" ---> Not have a book to return <---");
                     }
                 } else {
-                    System.out.println(" ----> Not have members yet!! <---- ");
+                    System.out.println(" ---> Not have members yet! <--- ");
                     System.out.println(" ");
                 }
             }
@@ -70,8 +80,9 @@ public class Test {
                 if (!gmm.checkAllMember()) {
                     getIdFromKeyboard();
                     System.out.println("Name : " + gmm.getMember(gmm.whoBorrowByIndex(ID)).toString());
+                    System.out.println(" ");
                 } else {
-                    System.out.println(" ----> Not have members yet!! <---- ");
+                    System.out.println(" ---> Not have members yet! <--- ");
                     System.out.println(" ");
                 }
             }
@@ -87,7 +98,8 @@ public class Test {
     public static int getNumberFromKeyboard() {
         int number = 0;
         while (!keyboard.hasNextInt()) {
-            System.out.println(" ----> Not this!! <---- ");
+            System.out.println(" -----> Not this! <----- ");
+
             keyboard.next();
 
         }
@@ -100,6 +112,7 @@ public class Test {
         do {
             System.out.print("Insert your ID : ");
             ID = getNumberFromKeyboard();
+            System.out.println(" ");
 
         } while (!gmm.checkName(ID));
 

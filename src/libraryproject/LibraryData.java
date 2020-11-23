@@ -1,13 +1,13 @@
 package libraryproject;
 
-public class Member {
+public class LibraryData {
 
     private int memberID;
     private String memberName;
     private String[] book = new String[2];
     private int numberOfBook;
 
-    public Member(int id, String name) {
+    public LibraryData(int id, String name) {
         this.memberName = name;
         this.memberID = id;
         numberOfBook = 0;
@@ -19,7 +19,7 @@ public class Member {
 
     public String getBook(int n) {
         if (n >= 2 || n <= -1 || book[n] == null) {
-            return "none";
+            return "None";
         }
         return book[n];
     }
@@ -72,9 +72,9 @@ public class Member {
             book += this.book[1];
         }
         if (memberID == -1) {
-            return "Full of members!!";
+            return "Full of members!";
         }
-        return "Your member ID = " + memberID + ", Your member name = " + memberName + book;
+        return "[ Your member ID = " + memberID + ", Your member name = " + memberName + " ]" + book;
     }
 
 }

@@ -1,17 +1,28 @@
 package libraryproject.test;
 
+/**
+* For start application.
+* @author Student
+*/
+
 import java.util.Scanner;
 import libraryproject.LibrarySystem;
 
-public class Test {
+public class Main {
 
     private static int ID = 0;
     private static LibrarySystem gmm = new LibrarySystem();
     static Scanner keyboard = new Scanner(System.in);
 
+    /**
+    * This main method is using for start the menu and get the value from the keyboard.
+    * @param args
+    */
+    
     public static void main(String[] args) {
 
-        String bookBorrow = null;
+        String bookBorrow;
+        bookBorrow = null;
 
         int option = 0;
 
@@ -48,10 +59,10 @@ public class Test {
 //                  keyboard.nextLine();
                     bookBorrow = keyboard.nextLine();
                     System.out.println(" ");
-                    System.out.println("             " + gmm.borrowBook(bookBorrow, gmm.whoBorrowByIndex(ID)) + "             ");
+                    System.out.println(gmm.borrowBook(bookBorrow, gmm.whoBorrowByIndex(ID)));
                     System.out.println(" ");
                 } else {
-                    System.out.println(" ---> Not have members yet! <--- ");
+                    System.out.println("Not have members yet!");
                     System.out.println(" ");
                 }
             }
@@ -68,10 +79,10 @@ public class Test {
                         System.out.println(gmm.returnBook(bookReturn, gmm.whoBorrowByIndex(ID)));
                         System.out.println(" ");
                     } else {
-                        System.out.println(" ---> Not have a book to return <---");
+                        System.out.println("Not have a book to return");
                     }
                 } else {
-                    System.out.println(" ---> Not have members yet! <--- ");
+                    System.out.println("Not have members yet!");
                     System.out.println(" ");
                 }
             }
@@ -82,7 +93,7 @@ public class Test {
                     System.out.println("Name : " + gmm.getMember(gmm.whoBorrowByIndex(ID)).toString());
                     System.out.println(" ");
                 } else {
-                    System.out.println(" ---> Not have members yet! <--- ");
+                    System.out.println("Not have members yet!");
                     System.out.println(" ");
                 }
             }
@@ -95,10 +106,14 @@ public class Test {
 
     }
 
+    /**
+    * For get the Number from the keyboard.
+    */
+    
     public static int getNumberFromKeyboard() {
         int number = 0;
         while (!keyboard.hasNextInt()) {
-            System.out.println(" -----> Not this! <----- ");
+            System.out.println("Not this!");
 
             keyboard.next();
 
@@ -108,6 +123,10 @@ public class Test {
         return number;
     }
 
+    /**
+    * For get the ID from the keyboard.
+    */
+    
     public static void getIdFromKeyboard() {
         do {
             System.out.print("Insert your ID : ");

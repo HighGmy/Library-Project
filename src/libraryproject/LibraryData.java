@@ -1,80 +1,123 @@
 package libraryproject;
 
+/**
+ * This is class LibraryData.
+ * @author Student
+ */
+
 public class LibraryData {
-
-    private int memberID;
+    
+    private int memberId;
     private String memberName;
-    private String[] book = new String[2];
-    private int numberOfBook;
+    private String[] bookLimit = new String[2];
+    private int numberLimit;
 
+    /**
+    * 
+    * @param
+    * @param
+    */
+    
+    
     public LibraryData(int id, String name) {
         this.memberName = name;
-        this.memberID = id;
-        numberOfBook = 0;
+        this.memberId = id;
+        numberLimit = 0;
     }
 
+    /**
+    * 
+    */
+    
     public int getMemberID() {
-        return memberID;
+        return memberId;
     }
 
+    /**
+    * 
+    * @param
+    */
+    
     public String getBook(int n) {
-        if (n >= 2 || n <= -1 || book[n] == null) {
+        if (n >= 2 || n <= -1 || bookLimit[n] == null) {
             return "None";
         }
-        return book[n];
+        return bookLimit[n];
     }
 
+    /**
+    * 
+    * @param 
+    */
+    
     public void addBook(String b) {
-        for (int i = 0; i < book.length; i++) {
-            if (book[i] == null) {
-                book[i] = b;
-                numberOfBook++;
+        for (int i = 0; i < bookLimit.length; i++) {
+            if (bookLimit[i] == null) {
+                bookLimit[i] = b;
+                numberLimit++;
                 break;
             }
         }
     }
 
+    /**
+    * 
+    * @param
+    */
+    
     public void cancelBook(String c) {
 
-        for (int i = 0; i < book.length; i++) {
-            if (book[i] != null) {
-                if (book[i].equals(c)) {
-                    book[i] = null;
-                    numberOfBook--;
+        for (int i = 0; i < bookLimit.length; i++) {
+            if (bookLimit[i] != null) {
+                if (bookLimit[i].equals(c)) {
+                    bookLimit[i] = null;
+                    numberLimit--;
                 }
             }
         }
     }
 
+    /**
+    * 
+    */
+    
     public String getName() {
         return memberName;
 
     }
+    
+    /**
+    * 
+    */
 
-    public int getNumberOfBook() {
-        return numberOfBook;
+    public int getNumberLimit() {
+        return numberLimit;
     }
 
+    /**
+    * 
+    */
+    
     @Override
     public String toString() {
         String book = "";
-        if (this.book[0] != null || this.book[1] != null) {
+        if (this.bookLimit[0] != null || this.bookLimit[1] != null) {
             book += "\n" + "Borrowed book : ";
         }
-        if (this.book[0] != null) {
-            book += this.book[0];
-            if (this.book[1] != null) {
+        if (this.bookLimit[0] != null) {
+            book += this.bookLimit[0];
+            if (this.bookLimit[1] != null) {
                 book += ", ";
             }
         }
 
-        if (this.book[1] != null) {
-            book += this.book[1];
+        if (this.bookLimit[1] != null) {
+            book += this.bookLimit[1];
         }
-        if (memberID == -1) {
+        if (memberId == -1) {
             return "Full of members!";
         }
-        return "[ Your member ID = " + memberID + ", Your member name = " + memberName + " ]" + book;
+        return "[ Your member ID = " + memberId + ", Your member name = " + memberName + " ]" + book;
     }
 
 }

@@ -56,7 +56,6 @@ public class Main {
                 if (!gmm.checkAllMember()) {
                     getIdFromKeyboard();
                     System.out.print("Insert name of books : ");
-//                  keyboard.nextLine();
                     bookBorrow = keyboard.nextLine();
                     System.out.println(" ");
                     System.out.println(gmm.borrowBook(bookBorrow, gmm.whoBorrowByIndex(ID)));

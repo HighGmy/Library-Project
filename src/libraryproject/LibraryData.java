@@ -2,23 +2,21 @@ package libraryproject;
 
 /**
  * This is class LibraryData.
+ *
  * @author Student
  */
-
 public class LibraryData {
-    
+
     private int memberId;
     private String memberName;
     private String[] bookLimit = new String[2];
     private int numberLimit;
 
     /**
-    * 
-    * @param
-    * @param
-    */
-    
-    
+     * This is Constructor for class LibraryData.
+     * @param id
+     * @param name
+     */
     public LibraryData(int id, String name) {
         this.memberName = name;
         this.memberId = id;
@@ -26,18 +24,18 @@ public class LibraryData {
     }
 
     /**
-    * 
-    */
-    
+     * This Method will get member ID
+     * @return member ID
+     */
     public int getMemberID() {
         return memberId;
     }
 
     /**
-    * 
-    * @param
-    */
-    
+     * This Method will get a book
+     * @param n
+     * @return limit of book
+     */
     public String getBook(int n) {
         if (n >= 2 || n <= -1 || bookLimit[n] == null) {
             return "None";
@@ -46,10 +44,9 @@ public class LibraryData {
     }
 
     /**
-    * 
-    * @param 
-    */
-    
+     * This method will add book
+     * @param b
+     */
     public void addBook(String b) {
         for (int i = 0; i < bookLimit.length; i++) {
             if (bookLimit[i] == null) {
@@ -61,10 +58,9 @@ public class LibraryData {
     }
 
     /**
-    * 
-    * @param
-    */
-    
+     * This method will cancel borrow a book
+     * @param c
+     */
     public void cancelBook(String c) {
 
         for (int i = 0; i < bookLimit.length; i++) {
@@ -78,26 +74,22 @@ public class LibraryData {
     }
 
     /**
-    * 
-    */
-    
+     * This method will get the name member
+     * @return name 
+     */
     public String getName() {
         return memberName;
 
     }
-    
-    /**
-    * 
-    */
 
+    /**
+     * This method will get number of limit
+     * @return number of limit
+     */
     public int getNumberLimit() {
         return numberLimit;
     }
 
-    /**
-    * 
-    */
-    
     @Override
     public String toString() {
         String book = "";

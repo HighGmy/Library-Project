@@ -71,7 +71,7 @@ public class Main {
                 System.out.println(" ");
                 if (!gmm.checkAllMember()) {
                     getIdFromKeyboard();
-                    if (gmm.getMember(ID).getBook(0) != null || gmm.getMember(ID).getBook(0) != null) {
+                    if (gmm.getMember(ID).getBook(0) != "None" || gmm.getMember(ID).getBook(1) != "None") {
                         System.out.print("Insert name of books : ");
                         String bookReturn = keyboard.nextLine();
                         System.out.println(" ");
